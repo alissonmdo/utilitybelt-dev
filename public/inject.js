@@ -29,18 +29,18 @@ var UtilityBeltFunctions = {
       return storageItems;
     },
     // TODO
-    removeItem(item) {
+    removeItem(storage, item) {
       storage.removeItem(item);
     },
     // TODO
-    setItem(key, value, oldKey) {
+    setItem(storage, key, value, oldKey) {
       if (oldKey !== undefined) {
         storage.removeItem(oldKey);
       }
       storage.setItem(key, value);
     },
     // TODO
-    clear() {
+    clear(storage) {
       storage.clear();
     },
     // TODO
@@ -48,7 +48,7 @@ var UtilityBeltFunctions = {
       return JSON.stringify(UtilityBeltFunctions.storage.getAll(), null, 4);
     },
     // TODO
-    importJson(json) {
+    importJson(storage, json) {
       try {
         var obj = JSON.parse(json);
         for (var i in obj) {
@@ -70,7 +70,7 @@ var UtilityBeltModules = {
    * @param {string} action - Action to be executed on the module
    * @param {Object} variables - Variables to help the action execution
    */
-  storage(module, action, variables) {
+  storage(module, action) {
     let result = null;
     const storage = module === "SESSIONSTORAGE" ? sessionStorage : localStorage;
     switch (action) {
@@ -81,7 +81,7 @@ var UtilityBeltModules = {
         UtilityBeltFunctions.storage.removeItem();
         break;
       case "SET":
-        UtilityBeltFunctions.storage.setItem(key, value);
+        // UtilityBeltFunctions.storage.setItem(key, value);
         break;
       case "CLEAR":
         UtilityBeltFunctions.storage.clear();
@@ -90,7 +90,7 @@ var UtilityBeltModules = {
         result = UtilityBeltFunctions.storage.exportJson();
         break;
       case "IMPORT":
-        UtilityBeltFunctions.storage.importJson(json);
+        // UtilityBeltFunctions.storage.importJson(json);
         break;
     }
     return result;
