@@ -15,6 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:strict": "set EXTEND_ESLINT=true&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -54,8 +55,8 @@
     }
   },
   "lint-staged": {
-    "*.ts": [
-      "./node_modules/.bin/eslint"
+    "*.ts?(x)": [
+      "./node_modules/.bin/eslint --max-warnings=0"
     ]
   }
 }

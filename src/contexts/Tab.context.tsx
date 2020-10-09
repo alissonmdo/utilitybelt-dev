@@ -5,7 +5,7 @@ import React, {
   useContext,
   useState,
 } from "react";
-import { WithChildren } from "../types/WithChildren";
+import { WithChildren } from "../types/WithChildren.type";
 
 export type TabContextType = {
   tab?: chrome.tabs.Tab;
